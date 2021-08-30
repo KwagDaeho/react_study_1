@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
 
+const text = "Hello REACT!";
+const titleClassName = "title_class";
+const myProps = { className: titleClassName, children: text };
+const elementTitle = <h1 {...myProps} />; /* 스프레드 연산자 */
+const elementSub = <h2>WHAT IS THIS?</h2>;
+const part = (title, desc) => (
+  <>
+    <h1>
+      {title}, {desc}
+    </h1>
+  </>
+);
+const parts = (
+  <>
+    {part("GOOD", "good")}
+    {part("BAD", "bad")}
+    {part("NICE", "nice")}
+  </>
+);
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {elementTitle}
+      {elementSub}
+      {parts}
     </div>
   );
 }
