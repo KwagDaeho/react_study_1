@@ -1,5 +1,5 @@
 import "./App.css";
-
+import React, { useState } from "react";
 const text = "Hello REACT!";
 const titleClassName = "title_class";
 const myProps = { className: titleClassName, children: text };
@@ -19,12 +19,34 @@ const parts = (
     {part("NICE", "nice")}
   </>
 );
+
 function App() {
+  const [keyword, setKeyword] = React.useState("");
+  const [typing, setTyping] = React.useState(false);
+  const [result, setResult] = React.useState(false);
+
+  function handleChange(event) {
+    setKeyword(event.target.value);
+    setTyping(true);
+  }
+  function handleClick() {
+    setTyping(false);
+    setResult(`We find result of ${keyword}`);
+  }
+
+  const lastResult = (
+    <>
+      <input onChange={handleChange}></input>
+      <button onClick={handleClick}>Search</button>
+      <p>{typing ? `Looking for....${keyword}` : result}</p>
+    </>
+  );
   return (
     <div className="App">
       {elementTitle}
       {elementSub}
       {parts}
+      {lastResult}
     </div>
   );
 }
