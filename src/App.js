@@ -5,6 +5,8 @@ const titleClassName = "title_class";
 const myProps = { className: titleClassName, children: text };
 const elementTitle = <h1 {...myProps} />; /* 스프레드 연산자 */
 const elementSub = <h2>WHAT IS THIS?</h2>;
+
+// use~~ 가 Hook 입니다.
 const part = (title, desc) => (
   <>
     <h1>
@@ -21,9 +23,16 @@ const parts = (
 );
 
 function App() {
-  const [keyword, setKeyword] = React.useState("");
+  const [keyword, setKeyword] = React.useState(() => {
+    return window.localStorage.getItem("keyword");
+  });
   const [typing, setTyping] = React.useState(false);
   const [result, setResult] = React.useState(false);
+
+  window.useEffect(() => {
+    window.localStorage.setItem("keyword", keyword);
+  }, [keyword, typing]);
+  // 두번째 인자가 바뀔 때 실행됨
 
   function handleChange(event) {
     setKeyword(event.target.value);
@@ -36,7 +45,7 @@ function App() {
 
   const lastResult = (
     <>
-      <input onChange={handleChange}></input>
+      <input onChange={handleChange} value={keyword}></input>
       <button onClick={handleClick}>Search</button>
       <p>{typing ? `Looking for....${keyword}` : result}</p>
     </>
