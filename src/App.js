@@ -23,20 +23,19 @@ const parts = (
 );
 
 function App() {
-  function useLoaclStorage() {}
-  const [keyword, setKeyword] = React.useState(() => {
-    return window.localStorage.getItem("keyword");
-  });
-  const [typing, setTyping] = React.useState(false);
-  const [result, setResult] = React.useState(false);
-
-  React.useEffect(() => {
-    window.localStorage.setItem("keyword", keyword);
-  }, [keyword, typing]);
-  // 두번째 인자가 바뀔 때 실행됨
-  React.useEffect(() => {
-    window.localStorage.setItem("result", keyword);
-  }, [result]);
+  function useLocalStorage(itemName, value = "") {
+    const [state, setState] = React.useState(() => {
+      return window.localStorage.getItem(itemName) || value;
+    });
+    React.useEffect(() => {
+      window.localStorage.setItem(itemName, state);
+    }, [state]);
+    // 두번째 인자가 바뀔 때 실행됨
+    return [state, setState];
+  }
+  const [keyword, setKeyword] = useLocalStorage("keyword");
+  const [typing, setTyping] = useLocalStorage("typing", false);
+  const [result, setResult] = useLocalStorage("result");
 
   function handleChange(event) {
     setKeyword(event.target.value);
