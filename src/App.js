@@ -53,12 +53,28 @@ function App() {
       <p>{typing ? `Looking for....${keyword}` : result}</p>
     </>
   );
+  const [show, setShow] = React.useState(false);
+  function hookFlow_handleClick() {
+    setShow(true);
+  }
+  let hookFlow = (
+    <>
+      <button onClick="hookFlow_handleClick">search</button>
+      {show ? (
+        <>
+          <input></input>
+          <p></p>
+        </>
+      ) : null}
+    </>
+  );
   return (
     <div className="App">
       {elementTitle}
       {elementSub}
       {parts}
       {lastResult}
+      {hookFlow}
     </div>
   );
 }
