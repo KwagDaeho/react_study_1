@@ -23,6 +23,7 @@ const parts = (
 );
 
 function App() {
+  console.log("App render start");
   function useLocalStorage(itemName, value = "") {
     const [state, setState] = React.useState(() => {
       return window.localStorage.getItem(itemName) || value;
@@ -36,6 +37,20 @@ function App() {
   const [keyword, setKeyword] = useLocalStorage("keyword");
   const [typing, setTyping] = useLocalStorage("typing", false);
   const [result, setResult] = useLocalStorage("result");
+  const [show, setShow] = React.useState(() => {
+    console.log("App use state");
+    return false;
+  });
+  React.useEffect(() => {
+    console.log("App useEffect, no deps");
+  });
+  React.useEffect(() => {
+    console.log("App useEffect, empty deps");
+  }, []);
+  React.useEffect(() => {
+    console.log("App useEffect, [show]");
+  }, [show]);
+  // useEffect 는 렌더가 완료된 후에 작동한다.
 
   function handleChange(event) {
     setKeyword(event.target.value);
@@ -45,7 +60,6 @@ function App() {
     setTyping(false);
     setResult(`We find result of ${keyword}`);
   }
-
   const lastResult = (
     <>
       <input onChange={handleChange} value={keyword}></input>
@@ -53,13 +67,12 @@ function App() {
       <p>{typing ? `Looking for....${keyword}` : result}</p>
     </>
   );
-  const [show, setShow] = React.useState(false);
   function hookFlow_handleClick() {
-    setShow(true);
+    setShow((prev) => !prev);
   }
   let hookFlow = (
     <>
-      <button onClick="hookFlow_handleClick">search</button>
+      <button onClick={hookFlow_handleClick}>search</button>
       {show ? (
         <>
           <input></input>
@@ -68,8 +81,9 @@ function App() {
       ) : null}
     </>
   );
+  console.log("App render end");
   return (
-    <div className="App">
+    <div className="app">
       {elementTitle}
       {elementSub}
       {parts}
