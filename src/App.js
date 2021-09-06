@@ -41,6 +41,11 @@ function App() {
     console.log("App use state");
     return false;
   });
+  const [text, setText] = React.useState(() => {
+    console.log("child useState");
+    return "";
+  });
+
   React.useEffect(() => {
     console.log("App useEffect, no deps");
   });
@@ -51,6 +56,19 @@ function App() {
     console.log("App useEffect, [show]");
   }, [show]);
   // useEffect 는 렌더가 완료된 후에 작동한다.
+  React.useEffect(() => {
+    console.log("child useEffect, no deps");
+    return () => {
+      console.log("child useEffect[CLEAN UP], no deps");
+    };
+  });
+  // clean up >> parent first
+  React.useEffect(() => {
+    console.log("child useEffect, empty deps");
+  }, []);
+  React.useEffect(() => {
+    console.log("child useEffect, [text]");
+  }, [text]);
 
   function handleChange(event) {
     setKeyword(event.target.value);
@@ -67,18 +85,27 @@ function App() {
       <p>{typing ? `Looking for....${keyword}` : result}</p>
     </>
   );
+  function childHandleChange(e) {
+    setText(e.target.value);
+  }
+  const child = () => {
+    console.log("child render start");
+    const element = (
+      <>
+        <input onChange={childHandleChange}></input>
+        <p>{text}</p>
+      </>
+    );
+    console.log("child render start");
+    return element;
+  };
   function hookFlow_handleClick() {
     setShow((prev) => !prev);
   }
   let hookFlow = (
     <>
       <button onClick={hookFlow_handleClick}>search</button>
-      {show ? (
-        <>
-          <input></input>
-          <p></p>
-        </>
-      ) : null}
+      {show ? child() : null}
     </>
   );
   console.log("App render end");
