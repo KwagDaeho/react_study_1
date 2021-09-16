@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const domUse = () => {
-  return <div>asd</div>;
-};
+function domUse() {
+  return <div>why???asd</div>;
+}
 
 export default domUse;

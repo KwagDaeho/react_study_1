@@ -1,7 +1,5 @@
 import "./App.css";
 import React, { useState } from "react";
-import domUse from "./domUse";
-
 const text = "Hello REACT!";
 const titleClassName = "title_class";
 const myProps = { className: titleClassName, children: text };
@@ -10,11 +8,9 @@ const elementSub = <h2>WHAT IS THIS?</h2>;
 
 // use~~ 가 Hook 입니다.
 const part = (title, desc) => (
-  <>
-    <h1>
-      {title}, {desc}
-    </h1>
-  </>
+  <h1>
+    {title}, {desc}
+  </h1>
 );
 const parts = (
   <>
@@ -94,7 +90,6 @@ function App() {
     console.log("child render start");
     const element = (
       <>
-        <domUse />
         <input onChange={childHandleChange}></input>
         <p>{text}</p>
       </>
@@ -113,15 +108,13 @@ function App() {
   );
   console.log("App render end");
   return (
-    <>
-      <div className="app">
-        {elementTitle}
-        {elementSub}
-        {parts}
-        {lastResult}
-        {hookFlow}
-      </div>
-    </>
+    <div className="app">
+      {elementTitle}
+      {elementSub}
+      {parts}
+      {lastResult}
+      {hookFlow}
+    </div>
   );
 }
 
