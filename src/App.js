@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React from "react";
 const text = "Hello REACT!";
 const titleClassName = "title_class";
 const myProps = { className: titleClassName, children: text };
@@ -8,18 +8,17 @@ const elementSub = <h2>WHAT IS THIS?</h2>;
 
 // use~~ 가 Hook 입니다.
 const part = (title, desc) => (
-  <h1>
-    {title}, {desc}
-  </h1>
+  <h4>
+    {title} / {desc}
+  </h4>
 );
 const parts = (
   <>
-    {part("GOOD", "good")}
-    {part("BAD", "bad")}
-    {part("NICE", "nice")}
+    {part("TITLE 1 GOOD ", "desc 1 good ")}
+    {part("TITLE 2 BAD ", "desc 2 bad ")}
+    {part("TITLE 3 NICE ", "desc 3 nice ")}
   </>
 );
-
 function App() {
   console.log("App render start");
   function useLocalStorage(itemName, value = "") {
@@ -51,7 +50,7 @@ function App() {
     console.log("App useEffect, empty deps");
   }, []);
   React.useEffect(() => {
-    console.log("App useEffect, [show]");
+    console.log("App useEffect, [show] change");
   }, [show]);
   // useEffect 는 렌더가 완료된 후에 작동한다.
   React.useEffect(() => {
@@ -65,7 +64,7 @@ function App() {
     console.log("child useEffect, empty deps");
   }, []);
   React.useEffect(() => {
-    console.log("child useEffect, [text]");
+    console.log("child useEffect, [text] change");
   }, [text]);
 
   function handleChange(event) {
@@ -78,8 +77,13 @@ function App() {
   }
   const lastResult = (
     <>
-      <input onChange={handleChange} value={keyword}></input>
+      <input
+        className="save_input"
+        onChange={handleChange}
+        value={keyword}
+      ></input>
       <button onClick={handleClick}>Search</button>
+      <h4>This message will be saved.</h4>
       <p>{typing ? `Looking for....${keyword}` : result}</p>
     </>
   );
@@ -90,8 +94,8 @@ function App() {
     console.log("child render start");
     const element = (
       <>
-        <input onChange={childHandleChange}></input>
-        <p>{text}</p>
+        <input onChange={childHandleChange} defaultValue={123}></input>
+        <div className="child_result">{text}</div>
       </>
     );
     console.log("child render start");
@@ -102,10 +106,13 @@ function App() {
   }
   let hookFlow = (
     <>
-      <button onClick={hookFlow_handleClick}>search</button>
+      <button onClick={hookFlow_handleClick} className="btn_search_toggle">
+        child toggle button
+      </button>
       {show ? child() : null}
     </>
   );
+
   console.log("App render end");
   return (
     <div className="app">

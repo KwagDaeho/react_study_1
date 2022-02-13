@@ -2,8 +2,10 @@ function Form1() {
   const handleSubmit = (event) => {
     event.preventDefault();
     alert(
-      `form name : ${event.target.elements.form_name.value}
-form number : ${event.target.elements.form_num.value}`
+      `
+      form name : ${event.target.elements.form_name.value}
+      form number : ${event.target.elements.form_num.value}
+      `
     );
   };
   return (

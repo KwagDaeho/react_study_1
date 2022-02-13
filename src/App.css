@@ -1,3 +1,22 @@
 .App {
   text-align: center;
 }
+* {
+  margin: 10px 0;
+}
+h1 {
+  margin: 20px 0;
+}
+.save_input {
+  min-width: 300px;
+}
+input {
+  margin: 10px 0;
+}
+p {
+  margin-bottom: 30px;
+}
+.child_result {
+  border: 1px solid #c1c1c1;
+  height: 18px;
+}
