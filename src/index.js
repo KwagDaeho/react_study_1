@@ -16,7 +16,11 @@ import ControlledComponent from "./_ControlledComponent";
 import UnControlledComponent from "./_UnControlledComponent";
 import UseHooks from "./UseHooks";
 import UseReducer from "./UseReducer";
-import CompositionWelcome from "./CompositionWelcome";
+import CompositionWelcome from "./Composition/CompositionWelcome";
+import Composition2wrap from "./Composition/Composition2wrap";
+import Input from "./HOC/Input";
+import Button from "./HOC/Button";
+import Memo from "./Memoization/Memo";
 ReactDOM.render(
   <React.StrictMode>
     <App />
@@ -34,6 +38,10 @@ ReactDOM.render(
     <UseHooks />
     <UseReducer />
     <CompositionWelcome />
+    <Composition2wrap />
+    <Input />
+    <Button />
+    <Memo />
   </React.StrictMode>,
   document.getElementById("root")
 );

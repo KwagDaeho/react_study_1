@@ -4,7 +4,7 @@ import React, { Component } from "react";
 export default class ClassComponent extends Component {
   constructor(props) {
     super(props);
-    console.log("constructor");
+    // console.log("constructor");
     this.state = { date: new Date() };
     this.handleClick = this.handleClick.bind(this);
     // 클래스컴포넌트 내에서 특정 함수를 제작해서 클래스를 직접 접근하고 싶을 때(= state에 접근?) 사용!
@@ -13,18 +13,18 @@ export default class ClassComponent extends Component {
   }
 
   componentDidMount() {
-    console.log("componentDidMount");
+    // console.log("componentDidMount");
     this.timerID = setInterval(() => this.tick(), 1000);
   }
   componentDidUpdate() {
-    console.log("componentDidUpdate");
+    // console.log("componentDidUpdate");
   }
   componentWillUnmount() {
-    console.log("componentWillUnmount");
+    // console.log("componentWillUnmount");
     clearInterval(this.timerID);
   }
   tick() {
-    console.log("tick");
+    // console.log("tick");
     this.setState({ date: new Date() });
   }
 
@@ -32,7 +32,7 @@ export default class ClassComponent extends Component {
     alert(this.state.date);
   };
   render() {
-    console.log("render.");
+    // console.log("render.");
     return (
       <div>
         <h2 onClick={this.handleClick}>
