@@ -1,13 +1,13 @@
 import React, { useCallback } from "react";
 import CommentItem from "./CommentItem";
 
-export default function Comments({ commetList }) {
+export default function Comments({ commentList }) {
   const handleClick = useCallback(() => {
-    console.log("눌렀다 버튼을 너는!");
+    console.log("당신은 !");
   }, []);
   return (
     <div>
-      {commetList.map((comment) => (
+      {commentList.map((comment) => (
         <CommentItem
           key={comment.id}
           id={comment.id}

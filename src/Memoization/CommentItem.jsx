@@ -13,7 +13,9 @@ function CommentItem({ id, title, comment, likes, onClick }) {
   ) {
     // 렌더링 타이밍을 집합하거나 로그...
     console.log(
-      `actualDuration-Title : ${title}: ${actualDuration} // ${baseDuration}`
+      `TITLE = ${title}
+actualDuration-Title = ${actualDuration}
+baseDuration = ${baseDuration}`
     );
   }
   const handleClick = () => {
@@ -23,8 +25,11 @@ function CommentItem({ id, title, comment, likes, onClick }) {
   };
   const rate = () => {
     console.log("Rate Check!");
-    return clickCount > 9 ? "good" : "bad";
+    return clickCount > 9 ? "GOOD!" : "Normal";
   };
+  if (id > 2) {
+    return false;
+  }
   return (
     <Profiler id="CommentItem" onRender={onRenderCallback}>
       <div className="commentItem" onClick={handleClick}>
