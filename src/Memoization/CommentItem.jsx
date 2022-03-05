@@ -27,9 +27,6 @@ baseDuration = ${baseDuration}`
     console.log("Rate Check!");
     return clickCount > 9 ? "GOOD!" : "Normal";
   };
-  if (id > 2) {
-    return false;
-  }
   return (
     <Profiler id="CommentItem" onRender={onRenderCallback}>
       <div className="commentItem" onClick={handleClick}>

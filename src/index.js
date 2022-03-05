@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
-// import App from "./App";
+import App from "./App";
 // import Form1 from "./Form1";
 // import Form2 from "./Form2";
 // import Error from "./Error";
@@ -21,14 +21,14 @@ import "./index.css";
 // import Input from "./HOC/Input";
 // import Button from "./HOC/Button";
 // import ContextPage from "./Context/ContextPage";
-// import Memo from "./Memoization/Memo";
+import Memo from "./Memoization/Memo";
 // import Example from "./Portals/Example";
-import Component from "./PropTypes/Component";
+// import Component from "./PropTypes/Component";
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App />
-    <Form1 />
+    <App />
+    {/*<Form1 />
     <Form2 />
     <Error />
     <StudyFetch />
@@ -45,10 +45,10 @@ ReactDOM.render(
     <Composition2wrap />
     <Input />
     <Button />
-    <ContextPage />
-    <Memo />} */}
+    <ContextPage />} */}
+    <Memo />
     {/* <Example /> */}
-    <Component />
+    {/* <Component /> */}
   </React.StrictMode>,
   document.getElementById("root")
 );

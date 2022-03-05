@@ -23,10 +23,6 @@ export default function Memo() {
         },
       ]);
     }, 2000);
-
-    return () => {
-      clearInterval(interval);
-    };
   }, []);
   return <Comments commentList={comments} />;
 }

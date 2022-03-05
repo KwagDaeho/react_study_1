@@ -3,7 +3,7 @@ import CommentItem from "./CommentItem";
 
 export default function Comments({ commentList }) {
   const handleClick = useCallback(() => {
-    console.log("당신은 !");
+    console.log("당신은 Comment를 눌렀다!!");
   }, []);
   return (
     <div>
